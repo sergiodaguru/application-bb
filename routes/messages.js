@@ -4,17 +4,17 @@ var router = express.Router();
 let ran = 0;
 function f() {
    ran++;
-   console.log("Test ABC Message " + ran)
-   setTimeout(f, 0);
+   console.log("Test ABC Message " + ran);
 }
 
 /* GET greeting */
 router.get('/messages', function(req, res, next) {
-  f();
+ setInterval(f,5000);
 
   setTimeout(() => { res.send(
                          { "Messages": ran }
-                       ) }, 5000);
+                       ) }, 2000);
+  clearInterval(f,15000);
 });
 
 module.exports = router;
